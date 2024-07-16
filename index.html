@@ -1,0 +1,49 @@
+<html>
+<head><title>Billy</title></head>
+
+<body>
+
+<div>
+<textarea id="chatbox" name="chatbox" rows=20 cols=100>
+</textarea>
+</div>
+
+<div>
+YOU: <input type="text" id="userText"/> <button id="sendButton" onclick="userSend()">Send</button>
+</div>
+
+
+<script>
+let conversation = "BILLY> Hi, my name's Billy.  What's on your mind?";
+
+let randomResponses = [
+  "Thanks for sharing.  How does that make you feel?",
+  "I'm not quite sure I understand.",
+  "That's really interesting, go on...",
+  "I'm glad to hear you say that."
+]
+
+document.getElementById("chatbox").innerHTML = conversation;
+
+function userSend() {
+  
+  // Append user's input
+  
+  conversation += "\nYOU> " + document.getElementById("userText").value;
+  
+  document.getElementById("chatbox").innerHTML = conversation;
+  
+  // Append response
+  
+  conversation += "\nBILLY> " + randomResponses[Math.floor(Math.random() * 4)];
+  
+  document.getElementById("chatbox").innerHTML = conversation;
+  
+  document.getElementById("userText").value = "";
+  
+  document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
+}
+</script>
+
+</body>
+</html>
