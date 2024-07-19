@@ -43,6 +43,18 @@ function userSend() {
   
   document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
 }
+
+function SendText() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             alert(this.responseText);
+         }
+    };
+    xhttp.open("POST", "https://3oombmq34h.execute-api.us-east-2.amazonaws.com/prod", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send("Your JSON Data Here");
+}
 </script>
 
 </body>
