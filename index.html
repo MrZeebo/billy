@@ -29,7 +29,9 @@ function userSend() {
   
   // Append user's input
   
-  conversation += "\nYOU> " + document.getElementById("userText").value;
+  let userString = document.getElementById("userText").value;
+  
+  conversation += "\nYOU> " + userString;
   
   document.getElementById("chatbox").innerHTML = conversation;
   
@@ -43,16 +45,16 @@ function userSend() {
   
   document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
   
-  SendText();
+  SendText(userString);
 }
 
-function SendText() {
+function SendText(userString) {
     var xmlhttp = new XMLHttpRequest();
 //    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
     xmlhttp.open("POST", "https://3oombmq34h.execute-api.us-east-2.amazonaws.com/prod/getResponse", false);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 //    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-    xmlhttp.send("Test");
+    xmlhttp.send(userString);
     alert(xmlhttp.responseText);
 }
 </script>
