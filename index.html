@@ -16,13 +16,6 @@ YOU: <input type="text" id="userText"/> <button id="sendButton" onclick="userSen
 <script>
 let conversation = "BILLY> Hi, my name's Billy.  What's on your mind?";
 
-let randomResponses = [
-  "Thanks for sharing.  How does that make you feel?",
-  "I'm not quite sure I understand.",
-  "That's really interesting, go on...",
-  "I'm glad to hear you say that."
-]
-
 document.getElementById("chatbox").innerHTML = conversation;
 
 function userSend() {
@@ -38,8 +31,7 @@ function userSend() {
   // Append response
    let billyResponse = SendText(userString);
    billyResponse = billyResponse.substring(1, billyResponse.length - 1);
-  
-  //conversation += "\nBILLY> " + randomResponses[Math.floor(Math.random() * 4)];
+
   conversation += "\nBILLY> " + billyResponse;
   
   document.getElementById("chatbox").innerHTML = conversation;
@@ -53,12 +45,9 @@ function userSend() {
 
 function SendText(userString) {
     var xmlhttp = new XMLHttpRequest();
-//    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
     xmlhttp.open("POST", "https://3oombmq34h.execute-api.us-east-2.amazonaws.com/prod/getResponse", false);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-//    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
     xmlhttp.send(userString);
-  //  alert(xmlhttp.responseText);
   return xmlhttp.responseText;
 }
 </script>
