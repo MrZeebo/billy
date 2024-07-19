@@ -36,8 +36,10 @@ function userSend() {
   document.getElementById("chatbox").innerHTML = conversation;
   
   // Append response
+   let billyResponse = SendText(userString);
   
-  conversation += "\nBILLY> " + randomResponses[Math.floor(Math.random() * 4)];
+  //conversation += "\nBILLY> " + randomResponses[Math.floor(Math.random() * 4)];
+  conversation += "\nBILLY> " + billyResponse;
   
   document.getElementById("chatbox").innerHTML = conversation;
   
@@ -45,7 +47,7 @@ function userSend() {
   
   document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
   
-  SendText(userString);
+ 
 }
 
 function SendText(userString) {
@@ -55,7 +57,8 @@ function SendText(userString) {
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 //    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
     xmlhttp.send(userString);
-    alert(xmlhttp.responseText);
+  //  alert(xmlhttp.responseText);
+  return xmlhttp.responseText;
 }
 </script>
 
