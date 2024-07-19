@@ -37,6 +37,7 @@ function userSend() {
   
   // Append response
    let billyResponse = SendText(userString);
+   billyResponse = billyResponse.substring(1, billyResponse.length - 1);
   
   //conversation += "\nBILLY> " + randomResponses[Math.floor(Math.random() * 4)];
   conversation += "\nBILLY> " + billyResponse;
