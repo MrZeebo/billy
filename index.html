@@ -50,7 +50,7 @@ function SendText() {
     var xmlhttp = new XMLHttpRequest();
 //    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
     xmlhttp.open("POST", "https://3oombmq34h.execute-api.us-east-2.amazonaws.com/prod/getResponse", false);
-    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 //    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
     xmlhttp.send("Test");
     alert(xmlhttp.responseText);
