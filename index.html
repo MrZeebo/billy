@@ -12,17 +12,22 @@
 YOU: <input type="text" id="userText"/> <button id="sendButton" onclick="userSend()">Send</button>
 </div>
 
-<div id="history"/>
+<div>
+<h2>Chat history</h2>
+</div>
 
+<div>
+<textarea id="history" name="history" rows=20 cols=100>
+</textarea>
+</div>
 
 <script>
 let conversation = "BILLY> Hi, my name's Billy.  What's on your mind?";
+let history = "";
 
 document.getElementById("chatbox").innerHTML = conversation;
 
-let history = GetHistory();
-
-document.getElementById("history").innerHTML = history;
+populateHistory();
 
 function userSend() {
   
@@ -47,6 +52,23 @@ function userSend() {
   document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
   
  
+}
+
+function populateHistory() {
+  let jsonText = GetHistory(); 
+  
+  let historyFromServer = JSON.parse(jsonText);  
+
+  for (let i in historyFromServer) {
+   
+   let item = historyFromServer[i];
+
+    history += "YOU> " + (item.userInput == null ? "" : item.userInput) + "\nBILLY> " + item.billyResponse + "\n";
+  }
+  
+  
+
+  document.getElementById("history").innerHTML = history;
 }
 
 function SendText(userString) {
