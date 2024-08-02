@@ -12,11 +12,17 @@
 YOU: <input type="text" id="userText"/> <button id="sendButton" onclick="userSend()">Send</button>
 </div>
 
+<div id="history"/>
+
 
 <script>
 let conversation = "BILLY> Hi, my name's Billy.  What's on your mind?";
 
 document.getElementById("chatbox").innerHTML = conversation;
+
+let history = GetHistory();
+
+document.getElementById("history").innerHTML = history;
 
 function userSend() {
   
@@ -50,6 +56,15 @@ function SendText(userString) {
     xmlhttp.send(userString);
   return xmlhttp.responseText;
 }
+
+function GetHistory() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST", "https://3oombmq34h.execute-api.us-east-2.amazonaws.com/prod/getHistory", false);
+    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xmlhttp.send("");
+  return xmlhttp.responseText;
+}
+
 </script>
 
 </body>
