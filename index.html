@@ -83,7 +83,7 @@ function GetHistory() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "https://3oombmq34h.execute-api.us-east-2.amazonaws.com/prod/getHistory", false);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xmlhttp.send("");
+    xmlhttp.send("Greg");
   return xmlhttp.responseText;
 }
 
